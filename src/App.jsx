@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { BASE_URL } from "./globals"
 import Nav from "./components/Nav"
 import Home from "./pages/Home"
+import Class from "./pages/class/Class"
 import Signin from "./pages/auth/Signin"
 import Signup from "./pages/auth/Signup"
 import { getProfile } from "./services/userService"
@@ -47,6 +48,7 @@ const App = () => {
             path="/auth/signin"
             element={<Signin getUserProfile={getUserProfile} />}
           />
+          <Route path="/class" element={<Class />} />
         </Routes>
       </main>
     </>
