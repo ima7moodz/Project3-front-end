@@ -5,6 +5,7 @@ import { BASE_URL } from "./globals"
 import Nav from "./components/Nav"
 import Home from "./pages/Home"
 import Class from "./pages/class/Class"
+import AddClass from "./pages/class/AddClass"
 import Signin from "./pages/auth/Signin"
 import Signup from "./pages/auth/Signup"
 import { getProfile } from "./services/userService"
@@ -12,6 +13,7 @@ import axios from "axios"
 
 const App = () => {
   const [user, setUser] = useState(null)
+  const [classes, setClasses] = useState([])
 
   const getUserProfile = async () => {
     try {
@@ -48,7 +50,11 @@ const App = () => {
             path="/auth/signin"
             element={<Signin getUserProfile={getUserProfile} />}
           />
-          <Route path="/class" element={<Class />} />
+          <Route path="/class" element={<Class user={user} />} />
+          <Route
+            path="/class/add"
+            element={<AddClass classes={classes} setClasses={setClasses} />}
+          />
         </Routes>
       </main>
     </>
