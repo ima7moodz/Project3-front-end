@@ -16,15 +16,7 @@ const Nav = ({ logOut, user }) => {
                   <Link to="/class">Class</Link>
                 </li>
 
-                {/* {user && user.role === "trainer" && (
-                  <li>
-                    <Link to="/class/add">Add Class</Link>
-                  </li>
-                )} */}
-
-                <li>
-                  <button onClick={logOut}>Log Out</button>
-                </li>
+                <button onClick={logOut}>Log Out</button>
               </>
             ) : (
               <>

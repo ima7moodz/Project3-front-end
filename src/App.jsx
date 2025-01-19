@@ -51,10 +51,12 @@ const App = () => {
             element={<Signin getUserProfile={getUserProfile} />}
           />
           <Route path="/class" element={<Class user={user} />} />
-          <Route
-            path="/class/add"
-            element={<AddClass classes={classes} setClasses={setClasses} />}
-          />
+          {user && user.role === "trainer" && (
+            <Route
+              path="/class/add"
+              element={<AddClass classes={classes} setClasses={setClasses} />}
+            />
+          )}
         </Routes>
       </main>
     </>

@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div>
       <h1>Welcome to the GYM</h1>
-      <p>Join class today, to be a better you!</p>
+      <h2>We train the comprehensive Martial Art</h2>
     </div>
   )
 }
