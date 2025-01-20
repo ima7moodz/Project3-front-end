@@ -20,7 +20,7 @@ const Class = ({ user }) => {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>Classes</h1>
+      <h1>Classes Available</h1>
       {user && user.role === "trainer" && (
         <Link
           to="/class/add"

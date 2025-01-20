@@ -10,6 +10,8 @@ import Signin from "./pages/auth/Signin"
 import Signup from "./pages/auth/Signup"
 import { getProfile } from "./services/userService"
 import axios from "axios"
+import ClassDetail from "./pages/class/ClassDetail"
+import UpdateClass from "./pages/class/UpdateClass"
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -57,6 +59,11 @@ const App = () => {
               element={<AddClass classes={classes} setClasses={setClasses} />}
             />
           )}
+          <Route path="/class/:id" element={<ClassDetail user={user} />} />
+          <Route
+            path="class/:id/update"
+            element={<UpdateClass classes={classes} setClasses={setClasses} />}
+          />
         </Routes>
       </main>
     </>

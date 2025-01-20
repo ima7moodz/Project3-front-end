@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 const ClassComp = ({ classData }) => {
   return (
@@ -13,6 +14,7 @@ const ClassComp = ({ classData }) => {
           minute: "2-digit",
         })}
       </p>
+      <Link to={`/class/${classData._id}`}>View Details</Link>
     </div>
   )
 }
