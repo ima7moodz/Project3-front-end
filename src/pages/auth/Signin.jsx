@@ -29,35 +29,51 @@ const Signin = ({ getUserProfile }) => {
   }
 
   return (
-    <main>
-      <h1>Sign In</h1>
-      {message && <p>{message}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={formData.username}
-            name="username"
-            onChange={handleChange}
-          />
+    <main className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <h1 className="text-center mb-4">Sign In</h1>
+          {message && <div className="alert alert-danger">{message}</div>}
+          <form onSubmit={handleSubmit} className="card p-4">
+            <div className="mb-3">
+              <label htmlFor="username" className="form-label">
+                Username:
+              </label>
+              <input
+                type="text"
+                id="username"
+                value={formData.username}
+                name="username"
+                onChange={handleChange}
+                className="form-control"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                Password:
+              </label>
+              <input
+                type="password"
+                id="password"
+                value={formData.password}
+                name="password"
+                onChange={handleChange}
+                className="form-control"
+                required
+              />
+            </div>
+            <div className="d-flex justify-content-between">
+              <button type="submit" className="btn btn-primary">
+                Sign In
+              </button>
+              <Link to="/" className="btn btn-secondary">
+                Cancel
+              </Link>
+            </div>
+          </form>
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={formData.password}
-            name="password"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <button type="submit">Sign In</button>
-          <Link to="/">Cancel</Link>
-        </div>
-      </form>
+      </div>
     </main>
   )
 }

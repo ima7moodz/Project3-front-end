@@ -36,15 +36,22 @@ const AddClass = ({ classes, setClasses }) => {
   }
 
   return (
-    <div>
+    <div className="container mt-4">
       <h1 className="text-center mb-4">Create a New Class</h1>
-      <form onSubmit={handleSubmit} style={{ maxWidth: "500px" }}>
-        <div>
-          <label htmlFor="classStyle">Class Style</label>
+      <form
+        onSubmit={handleSubmit}
+        className="border p-4 rounded"
+        style={{ maxWidth: "500px", margin: "auto" }}
+      >
+        <div className="mb-3">
+          <label htmlFor="classStyle" className="form-label">
+            Class Style
+          </label>
           <select
             id="classStyle"
             onChange={handleChange}
             value={formClass.classStyle}
+            className="form-select"
             required
           >
             <option value="">Select a style</option>
@@ -56,43 +63,54 @@ const AddClass = ({ classes, setClasses }) => {
           </select>
         </div>
 
-        <div>
-          <label htmlFor="duration">Duration (in minutes)</label>
+        <div className="mb-3">
+          <label htmlFor="duration" className="form-label">
+            Duration (in minutes)
+          </label>
           <input
             type="number"
             id="duration"
             placeholder="Enter duration"
             onChange={handleChange}
             value={formClass.duration}
+            className="form-control"
             required
             min="1"
           />
         </div>
 
-        <div>
-          <label htmlFor="time">Date & Time</label>
+        <div className="mb-3">
+          <label htmlFor="time" className="form-label">
+            Date & Time
+          </label>
           <input
             type="datetime-local"
             id="time"
             onChange={handleChange}
             value={formClass.time}
+            className="form-control"
             required
           />
         </div>
 
-        <div>
-          <label htmlFor="traineesInClass">Trainees in Class (optional)</label>
+        <div className="mb-3">
+          <label htmlFor="traineesInClass" className="form-label">
+            Trainees in Class (optional)
+          </label>
           <input
             type="number"
             id="traineesInClass"
             placeholder="Enter number of trainees"
             onChange={handleChange}
             value={formClass.traineesInClass}
+            className="form-control"
             min="0"
           />
         </div>
 
-        <button type="submit">Create Class</button>
+        <button type="submit" className="btn btn-primary w-100">
+          Create Class
+        </button>
       </form>
     </div>
   )

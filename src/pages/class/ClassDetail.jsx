@@ -63,32 +63,43 @@ const ClassDetail = ({ user }) => {
   }
 
   return (
-    <div>
-      <h1>Class Details</h1>
-      <p>Style: {classData.classStyle}</p>
-      <p>Duration: {classData.duration} minutes</p>
-      <p>
-        Time:{" "}
-        {new Date(classData.time).toLocaleString("en-US", {
-          weekday: "long",
-          hour: "2-digit",
-          minute: "2-digit",
-        })}
-      </p>
-      {classData.traineesInClass && (
-        <p>Trainees: {classData.traineesInClass}</p>
-      )}
+    <div className="container mt-4">
+      <h1 className="mb-4">Class Details</h1>
+      <div className="card p-3 mb-4">
+        <h3>Style: {classData.classStyle}</h3>
+        <p>Duration: {classData.duration} minutes</p>
+        <p>
+          Time:{" "}
+          {new Date(classData.time).toLocaleString("en-US", {
+            weekday: "long",
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
+        </p>
+        {classData.traineesInClass && (
+          <p>Trainees: {classData.traineesInClass}</p>
+        )}
+      </div>
+
       {user && user.role === "trainer" && (
         <div>
-          <button onClick={handleUpdate}>Update Class</button>
-          <button onClick={handleDelete}>Delete Class</button>
+          <button onClick={handleUpdate} className="btn btn-warning me-2">
+            Update Class
+          </button>
+          <button onClick={handleDelete} className="btn btn-danger">
+            Delete Class
+          </button>
         </div>
       )}
+
       {user && user.role === "trainee" && !hasJoined && (
-        <button onClick={handleJoinClass}>Join Class</button>
+        <button onClick={handleJoinClass} className="btn btn-primary mt-3">
+          Join Class
+        </button>
       )}
+
       {user && user.role === "trainee" && hasJoined && (
-        <p>You have already joined this class.</p>
+        <p className="mt-3 text-success">You have already joined this class.</p>
       )}
     </div>
   )

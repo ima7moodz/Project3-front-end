@@ -21,30 +21,39 @@ const JoinedClasses = ({ user }) => {
   }, [user])
 
   return (
-    <div>
-      <h1>My Joined Classes</h1>
+    <div className="container mt-5">
+      <h1 className="text-center mb-4">My Classes</h1>
       {joinedClasses.length === 0 ? (
-        <div>
+        <div className="alert alert-info text-center">
           <p>You haven't joined any classes yet.</p>
-          <Link to="/class">Browse Available Classes</Link>
+          <Link to="/class" className="btn btn-primary">
+            Browse Available Classes
+          </Link>
         </div>
       ) : (
-        <ul>
-          {joinedClasses.map((classData) => (
-            <li key={classData._id}>
-              <h2>{classData.classStyle}</h2>
-              <p>Duration: {classData.duration} minutes</p>
-              <p>
-                Time:{" "}
-                {new Date(classData.time).toLocaleString("en-US", {
-                  weekday: "long",
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
-              </p>
-              <p>Trainees In this Class: {classData.traineesInClass}</p>
-            </li>
-          ))}
+        <ul className="list-group">
+          {joinedClasses.map((classData) =>
+            classData ? (
+              <li key={classData._id} className="list-group-item mb-3">
+                <h2 className="h5">{classData.classStyle}</h2>
+                <p>
+                  <strong>Duration:</strong> {classData.duration} minutes
+                </p>
+                <p>
+                  <strong>Time:</strong>{" "}
+                  {new Date(classData.time).toLocaleString("en-US", {
+                    weekday: "long",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </p>
+                <p>
+                  <strong>Trainees in this Class:</strong>{" "}
+                  {classData.traineesInClass}
+                </p>
+              </li>
+            ) : null
+          )}
         </ul>
       )}
     </div>

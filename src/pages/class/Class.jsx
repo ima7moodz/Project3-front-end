@@ -19,29 +19,29 @@ const Class = ({ user }) => {
   }, [])
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Classes Available</h1>
+    <div className="container my-5">
+      <h1 className="text-center text-primary mb-4">Classes Available</h1>
+
+      {/* Add New Class Button for Trainers */}
       {user && user.role === "trainer" && (
         <Link
           to="/class/add"
-          style={{
-            backgroundColor: "blue",
-            color: "white",
-            padding: "8px 16px",
-            textDecoration: "none",
-            borderRadius: "4px",
-          }}
+          className="btn btn-primary mb-4"
+          style={{ padding: "8px 16px", textDecoration: "none" }}
         >
           Add New Class
         </Link>
       )}
-      <div>
+
+      <div className="row">
         {classes.length > 0 ? (
           classes.map((classData) => (
-            <ClassComp key={classData._id} classData={classData} />
+            <div className="col-md-4 mb-4" key={classData._id}>
+              <ClassComp classData={classData} />
+            </div>
           ))
         ) : (
-          <p>stay tuned</p>
+          <p className="text-center col-12">Stay tuned for upcoming classes!</p>
         )}
       </div>
     </div>

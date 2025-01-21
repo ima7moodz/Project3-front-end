@@ -7,6 +7,7 @@ const initialFormData = {
   password: "",
   passwordConf: "",
 }
+
 const Signup = ({ getUserProfile }) => {
   const [message, setMessage] = useState("")
   const [formData, setFormData] = useState(initialFormData)
@@ -38,52 +39,70 @@ const Signup = ({ getUserProfile }) => {
   }
 
   return (
-    <main>
-      <h1>Sign Up</h1>
-      {message && <p>{message}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={formData.username}
-            name="username"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={formData.password}
-            name="password"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="confirm">Confirm Password:</label>
-          <input
-            type="password"
-            id="confirm"
-            value={formData.passwordConf}
-            name="passwordConf"
-            onChange={handleChange}
-          />
-        </div>
+    <main className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <h1 className="text-center mb-4">Sign Up</h1>
+          {message && <div className="alert alert-danger">{message}</div>}
+          <form onSubmit={handleSubmit} className="card p-4">
+            <div className="mb-3">
+              <label htmlFor="username" className="form-label">
+                Username:
+              </label>
+              <input
+                type="text"
+                id="username"
+                value={formData.username}
+                name="username"
+                onChange={handleChange}
+                className="form-control"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                Password:
+              </label>
+              <input
+                type="password"
+                id="password"
+                value={formData.password}
+                name="password"
+                onChange={handleChange}
+                className="form-control"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="confirm" className="form-label">
+                Confirm Password:
+              </label>
+              <input
+                type="password"
+                id="confirm"
+                value={formData.passwordConf}
+                name="passwordConf"
+                onChange={handleChange}
+                className="form-control"
+                required
+              />
+            </div>
 
-        <div>
-          <button
-            type="submit"
-            style={{ backgroundColor: "#800000", color: "#fff" }}
-            disabled={isFormInvalid()}
-          >
-            Sign Up
-          </button>
-          <Link to="/">Cancel</Link>
+            <div className="d-flex justify-content-between">
+              <button
+                type="submit"
+                className="btn btn-maroon"
+                disabled={isFormInvalid()}
+              >
+                Sign Up
+              </button>
+              <Link to="/" className="btn btn-secondary">
+                Cancel
+              </Link>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </main>
   )
 }
