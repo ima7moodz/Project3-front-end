@@ -9,12 +9,6 @@ A website for managing classes in my martial art club. Trainers can create class
 
 ![Screenshot of the App](image.png)
 
-## Getting Started
-
-- **Deployed App**: [Martial Art Club Website](#)
-- **Planning Materials**: [Link to Planning Materials](#)
-- **Back-End Repository**: [Martial Art Club Backend](#)
-
 ## Attributions
 
 1. [Bootstrap Navbar Documentation](https://getbootstrap.com/docs/5.0/components/navbar/)  
