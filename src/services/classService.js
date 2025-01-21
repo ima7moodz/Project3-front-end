@@ -24,3 +24,13 @@ export const updateClass = async (id, data) => {
   const response = await client.put(`/class/${id}`, data)
   return response.data
 }
+
+export const joinClass = async (classId, userId) => {
+  const response = await client.post("/class/join", { classId, userId })
+  return response.data
+}
+
+export const getJoinedClasses = async (userId) => {
+  const response = await client.get(`/class/join/${userId}`)
+  return response.data
+}

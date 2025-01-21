@@ -12,6 +12,8 @@ import { getProfile } from "./services/userService"
 import axios from "axios"
 import ClassDetail from "./pages/class/ClassDetail"
 import UpdateClass from "./pages/class/UpdateClass"
+import JoinedClasses from "./pages/join/JoinedClasses"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -64,6 +66,7 @@ const App = () => {
             path="class/:id/update"
             element={<UpdateClass classes={classes} setClasses={setClasses} />}
           />
+          <Route path="class/join" element={<JoinedClasses user={user} />} />
         </Routes>
       </main>
     </>

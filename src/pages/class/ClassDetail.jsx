@@ -1,23 +1,32 @@
 import React, { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { getClassById, deleteClass } from "../../services/classService"
+import { joinClass, getJoinedClasses } from "../../services/classService"
 
 const ClassDetail = ({ user }) => {
   const { id } = useParams()
   const navigate = useNavigate()
   const [classData, setClassData] = useState(null)
+  const [hasJoined, setHasJoined] = useState(false)
 
   useEffect(() => {
     const getClass = async () => {
       try {
         const data = await getClassById(id)
         setClassData(data)
+
+        if (user) {
+          const joinedClasses = await getJoinedClasses(user._id)
+          setHasJoined(joinedClasses.some((classItem) => classItem._id === id))
+        }
       } catch (error) {
         console.error("Error fetching class details:", error)
       }
     }
-    getClass()
-  }, [id])
+    if (user) {
+      getClass()
+    }
+  }, [id, user])
 
   const handleDelete = async () => {
     try {
@@ -32,9 +41,21 @@ const ClassDetail = ({ user }) => {
     navigate(`/class/${id}/update`)
   }
 
-  const handleJoinClass = () => {
-    alert("You have successfully joined the class!")
-    // I will do the logic for join
+  const handleJoinClass = async () => {
+    try {
+      if (hasJoined) {
+        alert("You have already joined this class.")
+        return
+      }
+      await joinClass(id, user._id)
+      setHasJoined(true)
+
+      alert("Successfully joined the class!")
+      navigate("/class/join")
+    } catch (error) {
+      console.error("Error joining class:", error)
+      alert("Could not join the class.")
+    }
   }
 
   if (!classData) {
@@ -63,8 +84,11 @@ const ClassDetail = ({ user }) => {
           <button onClick={handleDelete}>Delete Class</button>
         </div>
       )}
-      {user && user.role === "trainee" && (
+      {user && user.role === "trainee" && !hasJoined && (
         <button onClick={handleJoinClass}>Join Class</button>
+      )}
+      {user && user.role === "trainee" && hasJoined && (
+        <p>You have already joined this class.</p>
       )}
     </div>
   )
