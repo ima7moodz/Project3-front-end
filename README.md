@@ -1,6 +1,6 @@
 # Martial Art Club
 
-A website for managing classes in my martial art club. Trainers can create classes, and trainees can request to join these classes.
+A website for managing classes in my martial art club. Trainers can create classes, and trainees can to join these classes.
 
 ## User Stories
 
